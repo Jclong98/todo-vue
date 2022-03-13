@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-
-type FilterType = 'all' | 'active' | 'completed'
+import { FilterType } from '../types'
 
 const props = defineProps<{ modelValue: FilterType }>()
 const emit = defineEmits<{

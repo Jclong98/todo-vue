@@ -3,3 +3,5 @@ export interface Todo {
   text: string
   complete: boolean
 }
+
+export type FilterType = 'all' | 'active' | 'completed'

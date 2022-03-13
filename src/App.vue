@@ -2,7 +2,7 @@
 import { useStorage } from '@vueuse/core'
 import draggable from 'vuedraggable'
 
-import { Todo as TodoType } from './types'
+import { Todo as TodoType, FilterType } from './types'
 import { useTodos } from './composables/useTodos'
 
 import Header from './components/Header.vue'
@@ -13,7 +13,6 @@ import FilterRadio from './components/FilterRadio.vue'
 
 const { todos, addTodo, removeTodo, clearCompleted } = useTodos()
 
-type FilterType = 'all' | 'active' | 'completed'
 const filterType = useStorage<FilterType>('filterType', 'all')
 
 const isVisible = (todo: TodoType) => {
