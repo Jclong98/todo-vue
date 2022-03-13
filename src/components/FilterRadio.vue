@@ -50,7 +50,7 @@ const filterType = computed({
 <style scoped>
 .filter-radio {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   gap: 10px;
 }
 </style>
