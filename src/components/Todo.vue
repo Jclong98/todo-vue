@@ -40,7 +40,7 @@ const updateChecked = (e: Event) => {
 
 <style scoped>
 .todo {
-  border: 1px solid gray;
+  border: 1px solid var(--border-color);
   padding: 10px;
   border-radius: 4px;
   margin: 10px 0;

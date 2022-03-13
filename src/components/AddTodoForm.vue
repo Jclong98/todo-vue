@@ -4,11 +4,11 @@ import { ref } from 'vue'
 const newTodoText = ref('')
 
 const emit = defineEmits<{
-  (e: 'add', text: string): void
+  (e: 'submit', text: string): void
 }>()
 
 const onSubmit = () => {
-  emit('add', newTodoText.value)
+  emit('submit', newTodoText.value)
   newTodoText.value = ''
 }
 </script>

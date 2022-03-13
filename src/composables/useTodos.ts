@@ -1,10 +1,5 @@
 import { useStorage } from '@vueuse/core'
-
-interface Todo {
-  id: number
-  text: string
-  complete: boolean
-}
+import { Todo } from '../types'
 
 export function useTodos() {
   const todos = useStorage<Todo[]>('todos', [
@@ -14,7 +9,7 @@ export function useTodos() {
   ])
 
   const removeTodo = (id: number) => {
-    todos.value = todos.value.filter(item => item.id !== id)
+    todos.value = todos.value.filter((item) => item.id !== id)
   }
 
   const addTodo = (text: string) => {
@@ -25,9 +20,14 @@ export function useTodos() {
     })
   }
 
+  const clearCompleted = () => {
+    todos.value = todos.value.filter((item) => !item.complete)
+  }
+
   return {
     todos,
     removeTodo,
     addTodo,
+    clearCompleted,
   }
 }
