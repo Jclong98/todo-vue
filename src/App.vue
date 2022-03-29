@@ -68,6 +68,13 @@ const isVisible = (todo: TodoType) => {
 
     <footer class="explaination-footer">
       <p>Drag and drop to reorder List</p>
+
+      <p>
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+          Frontend Mentor</a
+        >. Coded by <a href="https://github.com/jclong98">Jacob Long</a>.
+      </p>
     </footer>
   </div>
 </template>
