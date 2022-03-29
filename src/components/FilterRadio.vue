@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { FilterType } from '../types'
 
-const props = defineProps<{ modelValue: FilterType }>()
+const props = defineProps<{ modelValue: FilterType; key?: string }>()
 const emit = defineEmits<{
   (e: 'update:modelValue', value: FilterType): void
 }>()
@@ -34,14 +34,22 @@ const filterType = computed({
 
 <template>
   <div class="filter-radio">
-    <label v-for="item in filterItems" :key="item.value">
+    <label>
+      <input type="radio" name="filter" value="all" v-model="filterType" />
+      <span>All</span>
+    </label>
+    <label>
+      <input type="radio" name="filter" value="active" v-model="filterType" />
+      <span>Active</span>
+    </label>
+    <label>
       <input
         type="radio"
         name="filter"
-        :value="item.value"
+        value="completed"
         v-model="filterType"
       />
-      {{ item.label }}
+      <span>Completed</span>
     </label>
   </div>
 </template>
@@ -51,5 +59,28 @@ const filterType = computed({
   display: flex;
   justify-content: center;
   gap: 10px;
+  font-weight: bold;
+  /* color: var(--light-grayish-blue); */
+}
+
+html.dark .filter-radio {
+  color: var(--dark-grayish-blue);
+}
+
+.filter-radio label:hover {
+  cursor: pointer;
+  color: var(--very-dark-grayish-blue);
+}
+
+html.dark .filter-radio label:hover {
+  color: var(--very-light-grayish-blue);
+}
+
+.filter-radio input[type='radio'] {
+  display: none;
+}
+
+.filter-radio input[type='radio']:checked + span {
+  color: var(--bright-blue);
 }
 </style>

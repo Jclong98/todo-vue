@@ -6,27 +6,44 @@ const props = defineProps<{ todos: Todo[] }>()
 defineEmits<{ (e: 'clear'): void }>()
 
 const itemsLeft = computed(() => {
-  return props.todos.filter((todo) => !todo.complete).length
+  return props.todos.filter(todo => !todo.complete).length
 })
 </script>
 
 <template>
-  <footer>
+  <footer class="todo-footer">
     <span> {{ itemsLeft }} items left </span>
 
     <slot></slot>
 
-    <button @click="$emit('clear')">Clear Completed</button>
+    <button class="clear-btn" @click="$emit('clear')">Clear Completed</button>
   </footer>
 </template>
 
 <style scoped>
-footer {
-  border: 1px solid gray;
-  padding: 10px;
+.todo-footer {
+  padding: 0.5em 1em;
   border-radius: 4px;
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
+  font-size: 14px;
+  color: var(--dark-grayish-blue);
+}
+
+.todo-footer * {
+  flex-basis: 100%;
+}
+
+.clear-btn {
+  text-align: right;
+}
+
+.clear-btn:hover {
+  color: var(--very-dark-grayish-blue);
+}
+
+html.dark .clear-btn:hover {
+  color: var(--very-light-grayish-blue);
 }
 </style>

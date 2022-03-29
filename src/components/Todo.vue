@@ -1,68 +1,85 @@
 <script setup lang="ts">
-interface Props {
-  id: number
-  complete: boolean
-}
+import { computed } from 'vue'
+import Check from './Check.vue'
 
-defineProps<Props>()
+const props = withDefaults(
+  defineProps<{
+    id: number
+    complete?: boolean
+  }>(),
+  {
+    complete: false,
+  }
+)
 
 const emit = defineEmits<{
   (e: 'remove', id: number): void
   (e: 'update:complete', value: boolean): void
 }>()
 
-const updateChecked = (e: Event) => {
-  const target = e.target as HTMLInputElement
-  emit('update:complete', target.checked)
-}
+const complete = computed({
+  get() {
+    return props.complete
+  },
+  set(newValue: boolean) {
+    emit('update:complete', newValue)
+  },
+})
 </script>
 
 <template>
   <div>
-    <label :class="['todo', { complete: complete }]">
-      <p>
-        <span class="handle">⠿</span>
-        <input
-          type="checkbox"
-          :name="`todo-${id}`"
-          :id="`todo-${id}`"
-          :checked="complete"
-          @change="updateChecked($event)"
-        />
-        <span className="todo__text">
-          <slot></slot>
-        </span>
-      </p>
-      <button @click="$emit('remove', id)">Delete</button>
+    <label class="todo" :class="{ complete }">
+      <Check v-model="complete" />
+
+      <span className="todo__text">
+        <slot></slot>
+      </span>
+      <button title="Remove" class="remove-btn" @click="emit('remove', id)">
+        <img src="/images/icon-cross.svg" alt="remove button" />
+      </button>
     </label>
   </div>
 </template>
 
 <style scoped>
 .todo {
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  border-radius: 4px;
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  border-bottom: 1px solid var(--very-light-grayish-blue);
+}
+
+html.dark .todo {
+  border-bottom: 1px solid var(--very-dark-grayish-blue);
 }
 
 .todo p {
   margin: 0;
 }
 
-.todo .handle {
-  opacity: 0;
-  transition: all 0.2s ease-in-out;
-  cursor: grab;
-}
-
-.todo:hover .handle {
-  opacity: 1;
+.todo .todo__text:hover {
+  cursor: pointer;
 }
 
 .todo.complete .todo__text {
   text-decoration: line-through;
+  opacity: 50%;
+}
+
+.todo input[type='checkbox'] {
+  display: none;
+}
+
+.todo .remove-btn {
+  opacity: 0;
+}
+.todo:hover .remove-btn {
+  opacity: 1;
+}
+
+.remove-btn:focus-visible {
+  opacity: 1;
 }
 </style>
