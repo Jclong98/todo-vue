@@ -41,7 +41,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/jclong98/todo-vue](https://github.com/jclong98/todo-vue)
-<!-- - Live Site URL: [Add live site URL here](https://your-live-site-url.com) -->
+- Live Site URL: [https://gleaming-alpaca-bd8b47.netlify.app/](https://gleaming-alpaca-bd8b47.netlify.app/)
 
 ## My process
 
@@ -58,6 +58,7 @@ Users should be able to:
 - [VueUse](https://vueuse.org/)
 - [Unocss Style Reset](https://github.com/unocss/unocss/tree/main/packages/reset)
 - [Vue Draggable](https://github.com/SortableJS/vue.draggable.next)
+- Deployed with Netlify
 
 ### What I learned
 
