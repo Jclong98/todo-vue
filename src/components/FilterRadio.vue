@@ -34,22 +34,14 @@ const filterType = computed({
 
 <template>
   <div class="filter-radio">
-    <label>
-      <input type="radio" name="filter" value="all" v-model="filterType" />
-      <span>All</span>
-    </label>
-    <label>
-      <input type="radio" name="filter" value="active" v-model="filterType" />
-      <span>Active</span>
-    </label>
-    <label>
+    <label v-for="item in filterItems" :key="item.value">
       <input
         type="radio"
         name="filter"
-        value="completed"
+        :value="item.value"
         v-model="filterType"
       />
-      <span>Completed</span>
+      <span>{{ item.label }}</span>
     </label>
   </div>
 </template>

@@ -57,14 +57,17 @@ const isVisible = (todo: TodoType) => {
         </template>
 
         <template #footer>
-          <Footer :todos="todos" @clear="clearCompleted" key="footer">
-            <FilterRadio class="desktop-filter" v-model="filterType" />
+          <Footer
+            id="todo-footer"
+            :todos="todos"
+            @clear="clearCompleted"
+            key="footer"
+          >
+            <FilterRadio id="filter-radio" class="card" v-model="filterType" />
           </Footer>
         </template>
       </draggable>
     </div>
-
-    <FilterRadio class="card mobile-filter" v-model="filterType" />
 
     <footer class="explaination-footer">
       <p>Drag and drop to reorder List</p>
@@ -92,23 +95,28 @@ const isVisible = (todo: TodoType) => {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
-.mobile-filter {
-  margin-top: 1.25em;
-  padding: 0.5em;
-  gap: 2ch;
+#todo-footer {
+  position: relative;
+  margin-bottom: 6em;
 }
 
-.desktop-filter {
-  display: none;
+#filter-radio {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4em;
+  padding: 0.5em;
 }
 
 @media (min-width: 600px) {
-  .desktop-filter {
-    display: flex;
+  #todo-footer {
+    margin-bottom: 0;
   }
 
-  .mobile-filter {
-    display: none;
+  #filter-radio {
+    position: relative;
+    bottom: 0;
+    padding: 0;
   }
 }
 

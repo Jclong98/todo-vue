@@ -64,3 +64,8 @@ html.dark {
 html.dark .card {
   background-color: var(--very-dark-desaturated-blue);
 }
+
+a {
+  color: var(--bright-blue);
+  text-decoration: none;
+}
