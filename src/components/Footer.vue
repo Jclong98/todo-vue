@@ -25,10 +25,14 @@ const itemsLeft = computed(() => {
   padding: 0.5em 1em;
   border-radius: 4px;
   margin: 10px 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
   font-size: 14px;
   color: var(--dark-grayish-blue);
+}
+
+.todo-footer > * {
+  flex-basis: 100%;
 }
 
 .clear-btn {
