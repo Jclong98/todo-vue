@@ -38,7 +38,7 @@ const isVisible = (todo: TodoType) => {
 
     <AddTodoForm @submit="addTodo" />
 
-    <div class="todo-group card">
+    <main class="todo-group card">
       <draggable
         v-model="todos"
         tag="transition-group"
@@ -67,7 +67,7 @@ const isVisible = (todo: TodoType) => {
           </Footer>
         </template>
       </draggable>
-    </div>
+    </main>
 
     <footer class="explaination-footer">
       <p>Drag and drop to reorder List</p>
