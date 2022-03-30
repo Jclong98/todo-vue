@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { Todo } from '../types'
 
 const props = defineProps<{ todos: Todo[] }>()
-defineEmits<{ (e: 'clear'): void }>()
+const emit = defineEmits<{ (e: 'clear'): void }>()
 
 const itemsLeft = computed(() => {
   return props.todos.filter(todo => !todo.complete).length
@@ -16,7 +16,7 @@ const itemsLeft = computed(() => {
 
     <slot></slot>
 
-    <button class="clear-btn" @click="$emit('clear')">Clear Completed</button>
+    <button class="clear-btn" @click="emit('clear')">Clear Completed</button>
   </footer>
 </template>
 
