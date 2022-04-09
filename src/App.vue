@@ -44,6 +44,8 @@ const isVisible = (todo: TodoType) => {
         tag="transition-group"
         item-key="id"
         animation="200"
+        delay="100"
+        delayOnTouchOnly
       >
         <template #item="{ element }">
           <Todo
