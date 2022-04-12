@@ -28,17 +28,15 @@ const complete = computed({
 </script>
 
 <template>
-  <div>
-    <div class="todo" :class="{ complete }">
-      <Check v-model="complete" />
+  <div class="todo" :class="{ complete }">
+    <Check v-model="complete" />
 
-      <span className="todo__text">
-        <slot></slot>
-      </span>
-      <button title="Remove" class="remove-btn" @click="emit('remove', id)">
-        <img src="/images/icon-cross.svg" alt="remove button" />
-      </button>
-    </div>
+    <span className="todo__text">
+      <slot></slot>
+    </span>
+    <button title="Remove" class="remove-btn" @click="emit('remove', id)">
+      <img src="/images/icon-cross.svg" alt="remove button" />
+    </button>
   </div>
 </template>
 
