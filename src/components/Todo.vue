@@ -29,7 +29,7 @@ const complete = computed({
 
 <template>
   <div>
-    <label class="todo" :class="{ complete }">
+    <div class="todo" :class="{ complete }">
       <Check v-model="complete" />
 
       <span className="todo__text">
@@ -38,7 +38,7 @@ const complete = computed({
       <button title="Remove" class="remove-btn" @click="emit('remove', id)">
         <img src="/images/icon-cross.svg" alt="remove button" />
       </button>
-    </label>
+    </div>
   </div>
 </template>
 
