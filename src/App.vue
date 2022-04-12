@@ -36,39 +36,44 @@ const isVisible = (todo: TodoType) => {
   <div class="container">
     <Header />
 
-    <AddTodoForm @submit="addTodo" />
+    <main>
+      <AddTodoForm @submit="addTodo" />
 
-    <main class="todo-group card">
-      <draggable
-        v-model="todos"
-        tag="transition-group"
-        item-key="id"
-        animation="200"
-        delay="100"
-        delayOnTouchOnly
-      >
-        <template #item="{ element }">
-          <Todo
-            v-show="isVisible(element)"
-            :id="element.id"
-            v-model:complete="element.complete"
-            @remove="removeTodo(element.id)"
-          >
-            {{ element.text }}
-          </Todo>
-        </template>
-
-        <template #footer>
-          <Footer
-            id="todo-footer"
-            :todos="todos"
-            @clear="clearCompleted"
-            key="footer"
-          >
-            <FilterRadio id="filter-radio" class="card" v-model="filterType" />
-          </Footer>
-        </template>
-      </draggable>
+      <div class="todo-group card">
+        <draggable
+          v-model="todos"
+          tag="transition-group"
+          item-key="id"
+          animation="200"
+          delay="100"
+          delayOnTouchOnly
+        >
+          <template #item="{ element }">
+            <Todo
+              v-show="isVisible(element)"
+              :id="element.id"
+              v-model:complete="element.complete"
+              @remove="removeTodo(element.id)"
+            >
+              {{ element.text }}
+            </Todo>
+          </template>
+          <template #footer>
+            <Footer
+              id="todo-footer"
+              :todos="todos"
+              @clear="clearCompleted"
+              key="footer"
+            >
+              <FilterRadio
+                id="filter-radio"
+                class="card"
+                v-model="filterType"
+              />
+            </Footer>
+          </template>
+        </draggable>
+      </div>
     </main>
 
     <footer class="explaination-footer">

@@ -25,7 +25,11 @@ const value = computed({
 <template>
   <div class="check">
     <input type="checkbox" v-model="value" />
-    <button @click="value = !value" :class="{ checked: value }">
+    <button
+      @click="value = !value"
+      :class="{ checked: value }"
+      title="Toggle Checked"
+    >
       <img v-show="value" src="/images/icon-check.svg" alt="check icon" />
     </button>
   </div>
