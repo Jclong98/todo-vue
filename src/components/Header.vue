@@ -6,9 +6,7 @@ import DarkToggle from './DarkToggle.vue'
   <header>
     <h1>TODO</h1>
 
-    <div>
-      <DarkToggle />
-    </div>
+    <DarkToggle />
   </header>
 </template>
 
@@ -22,20 +20,20 @@ header {
 }
 
 h1 {
-  font-size: 30px;
   font-weight: bold;
   letter-spacing: 0.75ch;
   color: white;
+  font-size: 30px;
 }
 
 @media (min-width: 600px) {
   header {
     margin-top: 70px;
-    margin-bottom: 30px;
+    margin-bottom: 1.8em;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 2.2em;
   }
 }
 </style>

@@ -8,8 +8,10 @@ const emit = defineEmits<{
 }>()
 
 const onSubmit = () => {
-  emit('submit', newTodoText.value)
-  newTodoText.value = ''
+  if (newTodoText.value) {
+    emit('submit', newTodoText.value)
+    newTodoText.value = ''
+  }
 }
 </script>
 
