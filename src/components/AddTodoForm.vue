@@ -20,7 +20,7 @@ const onSubmit = () => {
     <div class="placeholder-check"></div>
     <input
       type="text"
-      v-model="newTodoText"
+      v-model.trim="newTodoText"
       placeholder="Create a new todo..."
     />
   </form>
