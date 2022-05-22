@@ -16,17 +16,9 @@ const { todos, addTodo, removeTodo, clearCompleted } = useTodos()
 const filterType = useStorage<FilterType>('filterType', 'all')
 
 const isVisible = (todo: TodoType) => {
-  if (filterType.value === 'all') {
-    return true
-  }
-
-  if (filterType.value === 'active') {
-    return !todo.complete
-  }
-
-  if (filterType.value === 'completed') {
-    return todo.complete
-  }
+  if (filterType.value === 'all') return true
+  if (filterType.value === 'active') return !todo.complete
+  if (filterType.value === 'completed') return todo.complete
 
   return false
 }
